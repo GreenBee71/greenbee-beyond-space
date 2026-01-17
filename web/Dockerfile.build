@@ -1,0 +1,23 @@
+# Admin Web 빌드를 위한 일회용 Docker 환경
+FROM ghcr.io/cirruslabs/flutter:stable
+
+# 기본 패키지 업데이트 및 필수 도구 설치
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    curl \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# 작업 디렉토리 설정
+WORKDIR /app
+
+# 주의: 소스 코드는 빌드 시점에 Volume Mount로 들어옵니다.
+# 여기서는 빌드 명령어만 실행할 수 있도록 준비합니다.
+# 권한 문제 방지를 위해 flutter 사용자(Docker 이미지 기본) 사용 고려
+# 하지만 결과물 소유권 문제 때문에 root로 빌드하고 chown 하는 패턴을 많이 씀.
+
+# 안전한 디렉토리 설정 (Git 오류 방지)
+RUN git config --global --add safe.directory /app
+
+CMD ["flutter", "build", "web", "--release", "--base-href", "/"]
