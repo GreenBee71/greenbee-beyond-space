@@ -13,7 +13,7 @@ from .core.security import get_password_hash
 
 app = FastAPI(
     title="GreenBee Beyond Space API",
-    root_path="/greenbee_beyond_space"
+    root_path="" # Empty for domain-based routing
 )
 
 # --- Static Files Mounting (Unified Build) ---
