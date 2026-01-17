@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  db:
+    image: ankane/pgvector:v0.4.1
+    environment:
+      POSTGRES_USER: greenbee
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: greenbee_beyond_space
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - greenbee_net
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - greenbee_net
+
+  api:
+    container_name: greenbee_beyond_space_unified
+    build:
+      context: ../
+      dockerfile: infra/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=db
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=greenbee_beyond_space
+      - POSTGRES_USER=greenbee
+      - REDIS_URL=redis://redis:6379
+      - PORT=8080
+      - APP_MODE=FULL_STACK
+    volumes:
+      - ../api:/app/api
+      - ../web/build/web:/app/api/service/www/admin
+      - ../app/build/web:/app/api/service/www/app
+    depends_on:
+      - db
+      - redis
+    networks:
+      - greenbee_net
+
+volumes:
+  pgdata:
+
+networks:
+  greenbee_net:
+    external: true

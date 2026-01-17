@@ -1,0 +1,48 @@
+name: greenbee_web
+description: A new Flutter project for GreenBee Beyond Space.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  google_fonts: ^6.1.0
+  flutter_riverpod: ^2.4.0
+  go_router: ^12.0.0
+  http: ^1.1.0
+  intl: ^0.18.1
+  fl_chart: ^0.65.0
+  shared_preferences: ^2.2.2
+  file_picker: ^10.3.8
+  dio: ^5.9.0
+  flutter_screenutil: ^5.9.3
+  reorderable_grid_view: ^2.2.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: Paperlogy
+      fonts:
+        - asset: fonts/Paperlogy-1Thin.ttf
+          weight: 100
+        - asset: fonts/Paperlogy-2ExtraLight.ttf
+          weight: 200
+        - asset: fonts/Paperlogy-3Light.ttf
+          weight: 300
+        - asset: fonts/Paperlogy-4Regular.ttf
+          weight: 400
+        - asset: fonts/Paperlogy-5Medium.ttf
+          weight: 500
+
+  assets:
+    - assets/images/logo.png

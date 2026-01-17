@@ -1,0 +1,59 @@
+steps:
+  # 1. Build Admin Web (Flutter)
+  - name: 'ghcr.io/cirruslabs/flutter:stable'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        cd web
+        flutter build web --release --base-href /greenbee_beyond_space/admin/
+
+  # 2. Build Resident App (Flutter)
+  - name: 'ghcr.io/cirruslabs/flutter:stable'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        cd app
+        flutter build web --release --base-href /greenbee_beyond_space/app/
+
+  # 3. Organize Assets into API directory
+  - name: 'bash'
+    args:
+      - '-c'
+      - |
+        mkdir -p api/service/www/admin
+        mkdir -p api/service/www/app
+        cp -r web/build/web/* api/service/www/admin/
+        cp -r app/build/web/* api/service/www/app/
+
+  # 4. Build Container Image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'asia-northeast3-docker.pkg.dev/$PROJECT_ID/greenbee-beyond-space/api:latest', '-f', 'infra/Dockerfile', '.' ]
+
+  # 5. Push Container Image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'asia-northeast3-docker.pkg.dev/$PROJECT_ID/greenbee-beyond-space/api:latest' ]
+
+  # 6. Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'greenbee-beyond-space-api'
+      - '--image'
+      - 'asia-northeast3-docker.pkg.dev/$PROJECT_ID/greenbee-beyond-space/api:latest'
+      - '--region'
+      - 'asia-northeast3'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--port'
+      - '8080'
+      - '--update-env-vars'
+      - 'FORCE_RELOAD_CI=$(date +%s)'
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+timeout: '1800s'
