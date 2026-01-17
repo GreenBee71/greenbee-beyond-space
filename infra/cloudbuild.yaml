@@ -6,7 +6,7 @@ steps:
       - '-c'
       - |
         cd web
-        flutter build web --release --base-href /greenbee_beyond_space/admin/
+        flutter build web --release --base-href /
 
   # 2. Build Resident App (Flutter)
   - name: 'ghcr.io/cirruslabs/flutter:stable'
@@ -15,7 +15,7 @@ steps:
       - '-c'
       - |
         cd app
-        flutter build web --release --base-href /greenbee_beyond_space/app/
+        flutter build web --release --base-href /
 
   # 3. Organize Assets into API directory
   - name: 'bash'
