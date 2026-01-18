@@ -7,21 +7,20 @@ import urllib.parse
 DB_USER = os.getenv("POSTGRES_USER", "greenbee")
 DB_PASS = os.getenv("POSTGRES_PASSWORD", "password")
 DB_NAME = os.getenv("POSTGRES_DB", "greenbee_beyond_space")
-DB_HOST = os.getenv("DB_HOST", "localhost")  # For local/docker-compose
-INSTANCE_CONNECTION_NAME = os.getenv("INSTANCE_CONNECTION_NAME")  # e.g. project:region:instance
+DB_HOST = os.getenv("DB_HOST", "localhost")
+INSTANCE_CONNECTION_NAME = os.getenv("INSTANCE_CONNECTION_NAME")
 
-# URL Encode password for special characters
+# URL Encode password to handle special chars safe
 encoded_pass = urllib.parse.quote_plus(DB_PASS)
 
-# Construct Database URL
 if INSTANCE_CONNECTION_NAME:
-    # Production Cloud Run (Unix Socket)
+    # Production Cloud Run (Unix Socket to Cloud SQL)
     DATABASE_URL = (
         f"postgresql+asyncpg://{DB_USER}:{encoded_pass}@/{DB_NAME}"
         f"?host=/cloudsql/{INSTANCE_CONNECTION_NAME}"
     )
 else:
-    # Local or Normal TCP
+    # Local/Docker TCP
     DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{encoded_pass}@{DB_HOST}:5432/{DB_NAME}"
 
 engine = create_async_engine(DATABASE_URL, echo=True)

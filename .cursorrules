@@ -1,0 +1,103 @@
+# GreenBee Beyond Space (그린비 비욘드 스페이스) 개발 가이드라인
+
+본 문서는 프로젝트의 기술 스택, 아키텍처 및 개발 규칙을 정의합니다. 모든 AI 에이전트는 이 규칙을 준수하여 코드를 작성하고 사용자와 소통해야 합니다.
+
+## 0. 언어 규칙 (최우선)
+- **모든 소통은 반드시 한국어로 진행합니다.**
+- 코드 내 주석과 문서는 필요에 따라 영어를 사용할 수 있으나, 사용자에게 제공하는 보고서와 메시지는 한글이어야 합니다.
+
+## 1. 기술 스택 (Tech Stack)
+- **Frontend**: Flutter (Mobile/Web/Desktop)
+  - **상태 관리**: Riverpod
+  - **라우팅**: go_router
+  - **디자인 패턴**: **Atomic Design** (atoms, molecules, organisms, templates, pages)
+- **Backend**: Python (FastAPI)
+  - **ORM**: SQLAlchemy (Async)
+  - **데이터베이스**: PostgreSQL + pgvector
+- **Gateway/Proxy**: Nginx (Reverse Proxy)
+  - 모든 API 접근은 `http://localhost/greenbee_beyond_space/api`를 통해야 합니다.
+
+## 2. 권한 체계 (Auth & Roles)
+사용자는 전역 역할과 단지별 역할을 동시에 가집니다.
+- **Global Role (전역 역할)**:
+  - `USER`: 일반 사용자
+  - `MASTER_ADMIN`: 시스템 전체 관리자 (모든 단지 관리 가능)
+- **Complex Role (단지별 역할)**:
+  - `RESIDENT`: 입주민
+  - `OWNER`: 소유주
+  - `ADMIN`: 해당 단지 관리사무소 직원
+
+## 3. 개발 원칙 (Strict)
+- **Atomic Design 준수**: Flutter UI 컴포넌트는 반드시 Atomic Design 디렉토리 구조에 맞춰 분리합니다.
+- **스택 이탈 금지**: 사용자가 직접 요청하지 않는 한, 새로운 기술 스택(예: React, Node.js)을 도입하지 않습니다. 기본적으로 Flutter와 Python(FastAPI)만 사용합니다.
+- **E2E 검증**: 코드 작성 후 반드시 실제 연동 테스트를 수행하고 결과를 보고합니다.
+- **Nginx 게이트웨이 호출**: 프론트엔드와 백엔드 간의 통신은 반드시 Nginx를 거치는 경로를 기본으로 합니다.
+
+## 4. 아키텍처 상세
+- **Frontend Structure**:
+  - `lib/core`: 공통 테마, 라우터, 위젯
+  - `lib/features/{feature}/ui/widgets/{atoms|molecules|organisms}`: 계층별 UI 컴포넌트
+  - `lib/features/{feature}/ui/pages`: 최종 페이지
+- **Backend Structure**:
+  - `app/api/endpoints`: 기능별 모듈화된 API
+  - `app/models`: SQLAlchemy 모델 정의
+  - `app/schemas`: Pydantic 스키마 정의/검증
+
+## 5. 프로젝트 비전 및 컨텐츠 (Core Vision)
+- **Any IoT Platform**: 그린비는 특정 제조사에 얽매이지 않는 개방형 IoT 플랫폼을 지향합니다. 사용자가 어떤 전자기기를 가져오더라도 수월하게 연결할 수 있는 '연결의 가교' 역할을 수행하며, 제조사와의 세부 연결은 가이드를 통해 사용자가 직접 수행하되 플랫폼은 이를 시각화하고 제어하는 통합 인터페이스를 제공합니다.
+- **AI Orchestration**: 연결된 IoT 데이터를 기반으로 사용자의 삶을 예측하고 제안하는 'Aura'와 'Concierge' 서비스를 핵심 경쟁력으로 가져갑니다.
+
+## 6. 디자인 및 사용자 경험 (Design & UX)
+- **Deep Dark Minimalist**: 극도로 절제된 다크 테마와 Glassmorphism, 그리고 유려한 마이크로 애니메이션을 사용하여 '초프리미엄' 감성을 전달합니다.
+- **Invisible Tech**: 기술은 드러나지 않되, 사용자가 필요로 하는 순간에만 자연스럽게 나타나는(Ambient UX) 방식을 지향합니다.
+
+## 7. 브라우저 및 터미널 사용
+... (이하 생략)
+
+## 8. GreenBee 시스템 표준 배포 가이드
+
+"내 프로젝트의 설정 파일(my_project.conf)만 건드리고, 옆 사람 파일이나 메인 설정(nginx.conf)은 절대 건드리지 않는다."
+
+당신은 GreenBee 시스템의 표준 아키텍처를 준수하는 DevOps 엔지니어입니다.
+우리는 **"Zero Host Port (호스트 포트 사용 금지)"** 및 **"Docker Internal Network"** 정책을 엄격히 따릅니다.
+새로운 프로젝트를 배포하거나 설정할 때 반드시 아래 **4대 원칙**을 지키세요.
+
+### 1. Docker Compose 설정 (제일 중요!)
+- `ports:` 섹션에 호스트 포트 바인딩(예: `9005:8000`)을 **절대 사용하지 마십시오**.
+- 오직 `expose:` 만을 사용하여 내부 포트(예: "8000")를 명시하십시오.
+- `container_name:`을 반드시 지정하고, 이를 **고유 식별자(DNS)**로 사용하십시오.
+- `networks:`에는 반드시 `greenbee_net` (external)을 포함시켜야 합니다.
+
+### 2. Nginx Gateway 설정
+- 호스트의 Nginx를 직접 건드리지 마십시오.
+- **경로**: `../greenbee_gateway/configs/{프로젝트명}.conf` 에 설정 파일을 생성하십시오.
+- **Proxy Pass**: `http://127.0.0.1:포트` 대신 **`http://{container_name}:8000`** 형식을 사용하십시오.
+  (예: `proxy_pass http://greenbee_ads_api:8000/;`)
+
+### 3. 디렉토리 구조
+- 프로젝트는 `/home/greenbee/source/` 아래에 위치합니다.
+- Gateway 설정 폴더는 상대 경로 `../greenbee_gateway/configs`로 접근한다고 가정합니다.
+
+### 4. 배포 마무리
+- 설정 파일 생성 후 반드시 `docker exec greenbee_gateway nginx -s reload` 명령어로 Gateway를 갱신해야 합니다.
+- 충돌 방지를 위해 절대 '남는 포트 찾기' 로직을 구현하지 마십시오. 그냥 8000번을 쓰면 됩니다.
+
+위 규칙을 위반하는 코드는 GreenBee 시스템 예외 규정에 따라 **거부**해야 합니다.
+
+## 9. GreenBee 격리 빌드 시스템 (Isolated Build System)
+
+모든 프론트엔드 빌드는 호스트 환경의 오염을 방지하고 일관성을 유지하기 위해 **Docker 격리 빌드**를 원칙으로 합니다.
+
+### 1. 빌드 원칙
+- **No Local Dependency**: 로컬에 Flutter SDK가 설치되어 있지 않아도 빌드가 가능해야 합니다.
+- **Dockerfile.build 사용**: 빌드 환경은 반드시 `admin/Dockerfile.build` (또는 지정된 빌드용 Dockerfile)에 정의된 표준 이미지를 사용합니다.
+- **One-Click Script**: 빌드 프로세스는 `./build_admin_docker.sh`와 같은 자동화 스크립트를 통해 수행하며, 컨테이너 생성 -> 빌드 -> 결과물 추출 -> 컨테이너 삭제 과정을 자동화합니다.
+
+### 2. 빌드 스크립트 표준 동작
+- `flutter clean` 및 `flutter pub get`을 컨테이너 내부에서 선행합니다.
+- 빌드 명령어는 반드시 `--release` 플래그와 올바른 `--base-href`를 포함해야 합니다.
+- 빌드 완료 후 생성된 파일의 소유권(ownership)을 현재 호스트 사용자로 복구(`chown`)해야 합니다.
+
+### 3. 서비스 반영
+- 빌드 결과물은 `frontend/build/web`에 위치하며, Docker Compose를 통해 Nginx 컨테이너에 마운트되어 서비스됩니다.
+- 빌드 후에는 반드시 `sudo docker compose restart web` 등을 통해 새 파일이 적용되도록 합니다.

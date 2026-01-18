@@ -13,7 +13,7 @@ from .core.security import get_password_hash
 
 app = FastAPI(
     title="GreenBee Beyond Space API",
-    root_path="" # Empty for domain-based routing
+    root_path="/greenbee_beyond_space"
 )
 
 # --- Static Files Mounting (Unified Build) ---
@@ -174,15 +174,9 @@ async def seed_data(session: AsyncSession):
 
 @app.on_event("startup")
 async def startup_event():
-    try:
-        print(">>> Initializing Database...")
-        async with engine.begin() as conn:
-            await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
-            await conn.run_sync(Base.metadata.create_all)
-        
-        async with AsyncSessionLocal() as session:
-            await seed_data(session)
-        print(">>> Database Initialization Successful.")
-    except Exception as e:
-        print(f"⚠️  Database connection failed during startup: {e}")
-        print(">>> Container will continue starting for health check compliance.")
+    async with engine.begin() as conn:
+        await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
+        await conn.run_sync(Base.metadata.create_all)
+    
+    async with AsyncSessionLocal() as session:
+        await seed_data(session)

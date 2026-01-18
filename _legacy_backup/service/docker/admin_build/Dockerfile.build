@@ -1,0 +1,19 @@
+# Admin Web 빌드를 위한 일회용 Docker 환경
+FROM ghcr.io/cirruslabs/flutter:stable
+
+# 기본 패키지 업데이트 및 필수 도구 설치
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    curl \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# 작업 디렉토리 설정
+WORKDIR /app
+
+# 안전한 디렉토리 설정 (Git 오류 방지)
+RUN git config --global --add safe.directory /app
+
+# 기본 실행 명령어
+CMD ["flutter", "build", "web", "--release", "--base-href", "/greenbee_beyond_space/"]

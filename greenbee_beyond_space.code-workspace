@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../greenbee_gateway"
+		}
+	],
+	"settings": {}
+}

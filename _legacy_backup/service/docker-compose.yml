@@ -1,0 +1,52 @@
+# version: '3.8' (obsolete)
+
+services:
+  # Backend (FastAPI)
+  backend:
+    image: service-backend:latest
+    # build: ./backend
+    container_name: greenbee_beyond_space_api_1
+    volumes:
+      - ./backend:/app
+    environment:
+      - ROOT_PATH=/greenbee_beyond_space/api
+      - DB_HOST=db
+      - POSTGRES_PASSWORD=greenbee_pass
+    expose:
+      - "8000"
+    depends_on:
+      - db
+    networks:
+      - greenbee_net
+
+  # Frontend (Flutter Web)
+  web:
+    image: nginx:alpine 
+    container_name: greenbee_beyond_space_web_1
+    volumes:
+      - ../web/build/web:/usr/share/nginx/html
+    expose:
+      - "80"
+    networks:
+      - greenbee_net
+
+  # Unified Database (PostgreSQL + pgvector)
+  # Handles both Relational (Users, Fees) and Vector Data (AI Embeddings)
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: greenbee_beyond_space_db_1
+    environment:
+      - POSTGRES_USER=greenbee
+      - POSTGRES_PASSWORD=greenbee_pass
+      - POSTGRES_DB=greenbee_beyond_space.db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - greenbee_net
+
+networks:
+  greenbee_net:
+    external: true
+
+volumes:
+  postgres_data:

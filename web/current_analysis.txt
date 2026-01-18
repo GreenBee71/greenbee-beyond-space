@@ -1,0 +1,91 @@
+Analyzing frontend...                                           
+
+warning • Unused import: 'package:flutter/material.dart' • lib/core/router/router.dart:1:8 • unused_import
+  error • The argument for the named parameter 'fontFamily' was already specified • lib/core/widgets/atoms/neon_button.dart:46:17 • duplicate_named_argument
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/molecules/activity_tile.dart:31:44 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/molecules/nav_card.dart:60:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/organisms/fee_summary_card.dart:34:72 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/organisms/fee_summary_card.dart:34:102 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/organisms/visitor_card.dart:13:27 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/organisms/visitor_card.dart:28:30 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/core/widgets/organisms/visitor_card.dart:29:31 • deprecated_member_use
+   info • 'groupValue' is deprecated and shouldn't be used. Use a RadioGroup ancestor to manage group value instead. This feature was deprecated after v3.32.0-0.0.pre • lib/core/widgets/organisms/vote_card.dart:29:13 • deprecated_member_use
+   info • 'onChanged' is deprecated and shouldn't be used. Use RadioGroup to handle value change instead. This feature was deprecated after v3.32.0-0.0.pre • lib/core/widgets/organisms/vote_card.dart:31:13 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/pages/master_announcement_page.dart:39:77 • deprecated_member_use
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/features/admin/ui/pages/master_announcement_page.dart:107:19 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/pages/master_complex_management_page.dart:39:77 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/pages/master_user_management_page.dart:39:77 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/templates/admin_shell_template.dart:28:44 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/templates/admin_shell_template.dart:62:49 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/admin_user_card.dart:17:27 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/admin_user_card.dart:21:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/admin_user_card.dart:26:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/admin_user_card.dart:35:73 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/admin_visitor_card.dart:21:27 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/admin_visitor_card.dart:25:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/admin_visitor_card.dart:37:111 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/admin_visitor_card.dart:39:79 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/admin_visitor_card.dart:44:56 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/admin_visitor_card.dart:46:75 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/announcement_list_item.dart:15:29 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/announcement_list_item.dart:17:48 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/announcement_list_item.dart:28:48 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/announcement_list_item.dart:50:75 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/complex_list_item.dart:16:29 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/complex_list_item.dart:18:48 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/complex_list_item.dart:25:44 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/complex_list_item.dart:42:81 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/complex_list_item.dart:58:39 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/master_header.dart:46:33 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/master_header.dart:53:45 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/master_stat_card.dart:33:57 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/user_list_item.dart:18:29 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/user_list_item.dart:20:48 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/user_list_item.dart:25:52 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/user_list_item.dart:42:81 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/user_list_item.dart:57:53 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/user_list_item.dart:83:80 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/user_list_item.dart:83:113 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/molecules/user_list_item.dart:85:105 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/organisms/bulk_billing_section.dart:55:42 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/admin/ui/widgets/organisms/bulk_billing_section.dart:90:45 • deprecated_member_use
+  error • The argument for the named parameter 'fontFamily' was already specified • lib/features/auth/ui/pages/login_page.dart:60:99 • duplicate_named_argument
+  error • The argument for the named parameter 'fontFamily' was already specified • lib/features/auth/ui/pages/login_page.dart:69:99 • duplicate_named_argument
+  error • The argument for the named parameter 'fontFamily' was already specified • lib/features/auth/ui/pages/login_page.dart:106:117 • duplicate_named_argument
+  error • The argument for the named parameter 'fontFamily' was already specified • lib/features/auth/ui/pages/login_page.dart:118:125 • duplicate_named_argument
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/ui/widgets/molecules/login_logo.dart:14:40 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/ui/widgets/molecules/login_logo.dart:16:59 • deprecated_member_use
+  error • The argument for the named parameter 'fontFamily' was already specified • lib/features/auth/ui/widgets/molecules/login_logo.dart:28:13 • duplicate_named_argument
+  error • The argument for the named parameter 'fontFamily' was already specified • lib/features/auth/ui/widgets/molecules/login_logo.dart:39:13 • duplicate_named_argument
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/finance/ui/widgets/molecules/energy_coach_card.dart:16:32 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/finance/ui/widgets/molecules/energy_coach_card.dart:17:26 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/finance/ui/widgets/molecules/energy_coach_card.dart:23:54 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/finance/ui/widgets/molecules/energy_coach_card.dart:26:39 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/finance/ui/widgets/molecules/energy_coach_card.dart:125:52 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/finance/ui/widgets/molecules/energy_coach_card.dart:151:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/finance/ui/widgets/molecules/fee_summary_card.dart:35:47 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/finance/ui/widgets/molecules/transaction_tile.dart:33:79 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/finance/ui/widgets/molecules/wallet_card.dart:77:33 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/finance/ui/widgets/organisms/fee_tab_content.dart:71:67 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/iot/ui/widgets/molecules/concierge_suggestion_card.dart:55:56 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/iot/ui/widgets/molecules/home_infra_card.dart:48:86 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/iot/ui/widgets/molecules/infinite_garden_canvas.dart:28:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/iot/ui/widgets/molecules/infinite_garden_canvas.dart:30:62 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/iot/ui/widgets/molecules/infinite_garden_canvas.dart:80:23 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/pages/resident_home_page.dart:248:47 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/molecules/ai_coach_highlight.dart:57:54 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/molecules/challenge_card.dart:32:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/molecules/challenge_card.dart:63:39 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/molecules/challenge_card.dart:75:60 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/molecules/delivery_status_card.dart:46:56 • deprecated_member_use
+warning • Unused import: 'package:greenbee_beyond_space/core/widgets/atoms/glass_container.dart' • lib/features/resident/ui/widgets/molecules/ev_charger_tile.dart:3:8 • unused_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/molecules/facility_status_tile.dart:37:35 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/molecules/facility_status_tile.dart:55:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/molecules/facility_status_tile.dart:57:53 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/molecules/share_item_tile.dart:34:37 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/organisms/energy_summary_card.dart:39:42 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/organisms/search_tab_content.dart:22:39 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/organisms/search_tab_content.dart:47:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/resident/ui/widgets/organisms/search_tab_content.dart:62:61 • deprecated_member_use
+
+87 issues found. (ran in 5.0s)
