@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/foundation.dart';
 
 final dioProvider = Provider<Dio>((ref) {
-  // Web production environment (Nginx Proxy) should use relative path
-  String baseUrl = 'http://localhost:8000/greenbee_beyond_space/api';
+  // Web production environment should use relative path /api
+  String baseUrl = '/api';
   
-  if (kIsWeb) {
-    // Browser will handle host/port automatically
-    baseUrl = '/greenbee_beyond_space/api';
+  if (!kIsWeb) {
+    // For mobile/local testing outside browser
+    baseUrl = 'http://localhost:8080/api';
   }
 
   final dio = Dio(
