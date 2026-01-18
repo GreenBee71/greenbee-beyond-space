@@ -3,16 +3,26 @@ from sqlalchemy.orm import sessionmaker
 import os
 import urllib.parse
 
-# Load DB Pass from Env
-DB_PASS = os.getenv("POSTGRES_PASSWORD", "greenbee_pass")
-# URL Encode password to handle special chars safe
+# DB Secrets from Environment
+DB_USER = os.getenv("POSTGRES_USER", "greenbee")
+DB_PASS = os.getenv("POSTGRES_PASSWORD", "password")
+DB_NAME = os.getenv("POSTGRES_DB", "greenbee_beyond_space")
+DB_HOST = os.getenv("DB_HOST", "localhost")  # For local/docker-compose
+INSTANCE_CONNECTION_NAME = os.getenv("INSTANCE_CONNECTION_NAME")  # e.g. project:region:instance
+
+# URL Encode password for special characters
 encoded_pass = urllib.parse.quote_plus(DB_PASS)
 
-DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_NAME = os.getenv("POSTGRES_DB", "greenbee_beyond_space.db")
-DB_USER = os.getenv("POSTGRES_USER", "greenbee")
-
-DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{encoded_pass}@{DB_HOST}:5432/{DB_NAME}"
+# Construct Database URL
+if INSTANCE_CONNECTION_NAME:
+    # Production Cloud Run (Unix Socket)
+    DATABASE_URL = (
+        f"postgresql+asyncpg://{DB_USER}:{encoded_pass}@/{DB_NAME}"
+        f"?host=/cloudsql/{INSTANCE_CONNECTION_NAME}"
+    )
+else:
+    # Local or Normal TCP
+    DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{encoded_pass}@{DB_HOST}:5432/{DB_NAME}"
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 

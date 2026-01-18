@@ -51,8 +51,10 @@ steps:
       - '--allow-unauthenticated'
       - '--port'
       - '8080'
+      - '--add-cloudsql-instances'
+      - 'greenbee-platform:asia-northeast3:greenbee-ads-db'
       - '--update-env-vars'
-      - 'FORCE_RELOAD_CI=$(date +%s)'
+      - 'INSTANCE_CONNECTION_NAME=greenbee-platform:asia-northeast3:greenbee-ads-db,POSTGRES_USER=greenbee,POSTGRES_PASSWORD=password,POSTGRES_DB=greenbee_beyond_space,FORCE_RELOAD_CI=$(date +%s)'
 
 options:
   machineType: 'E2_HIGHCPU_8'
